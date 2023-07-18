@@ -81,4 +81,10 @@ table {
   background: #daa520;
 }
 
+body {
+    font-family: "AppleSDGothicNeoM";
+    background-color: ${(props) => props.theme.bgColor};
+    color: ${(props) => props.theme.textColor};
+}
+
 `;

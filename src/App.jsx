@@ -1,9 +1,30 @@
+// App.jsx
+
 import { useState } from "react";
+import Router from "./Router";
+import Header from "./components/Header/Header";
+import { ThemeProvider } from "styled-components";
+import { dark, light } from "./Theme";
+import { GlobalStyle } from "./GlobalStyle";
+import Footer from "./components/Footer/Footer";
+import { Container } from "./components/HomeStyle";
 
 function App() {
-  const [count, setCount] = useState(0);
+  // User Theme----------------------------------------
+  const [themeMode, setThemeMode] = useState("black");
 
-  return <>HI</>;
+  const theme = themeMode === "black" ? dark : light;
+
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Container>
+        <Header />
+        <Router />
+        <Footer />
+      </Container>
+    </ThemeProvider>
+  );
 }
 
 export default App;
