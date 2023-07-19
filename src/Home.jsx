@@ -1,16 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import {
   BodySection,
   DataTable,
-  EmptyText,
   HeadSection,
   HeadText,
   HomeContainer,
-  TableTd,
   TableTh,
 } from "./components/BodyStyle";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   // State 작성------------------------------------------------
@@ -32,27 +28,7 @@ const Home = () => {
       <HeadSection>
         <HeadText>서울시 권역별 실시간 대기환경 현황</HeadText>
       </HeadSection>
-      <BodySection>
-        <DataTable>
-          <thead>
-            <tr>
-              {/* MSRDT */}
-              <TableTh>측정일</TableTh>
-              {/* MSRSTE_NM */}
-              <TableTh>측정소</TableTh>
-              {/* PM10 */}
-              <TableTh>미세먼지(㎍/㎥)</TableTh>
-              {/* PM25 */}
-              <TableTh>초미세먼지농도(㎍/㎥)</TableTh>
-              {/* IDEX_NM */}
-              <TableTh>통합대기환경등급</TableTh>
-              {/* IDEX_MVL */}
-              <TableTh>통합대기환경지수</TableTh>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </DataTable>
-      </BodySection>
+      <BodySection></BodySection>
     </HomeContainer>
   );
 };
