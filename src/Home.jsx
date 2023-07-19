@@ -1,34 +1,26 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   BodySection,
   DataTable,
+  EmptyText,
   HeadSection,
   HeadText,
   HomeContainer,
-  TableTBody,
-  TableTHead,
   TableTd,
   TableTh,
 } from "./components/BodyStyle";
 import axios from "axios";
-
-// Constant-----------------------------------------------
-const API_KEY = "6e4f534e4f776e733830444d696c71";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  // State------------------------------------------------
-  const [weatherData, setWeatherData] = useState([]);
+  // State 작성------------------------------------------------
+
+  // Function 작성---------------------------------------------
   const fetchData = async () => {
     // OPEN API 비동기로 불러와 State에 저장하기
-    try {
-      const response = await axios.get(
-        `http://openAPI.seoul.go.kr:8088/${API_KEY}/json/RealtimeCityAir/1/5/`
-      );
-      setWeatherData(response.data.RealtimeCityAir.row);
-    } catch (error) {
-      console.log(error);
-    }
   };
+
+  // ComponentDidMount-----------------------------------------
   useEffect(() => {
     // 렌더링 후 1회 실행
     fetchData();
@@ -42,12 +34,12 @@ const Home = () => {
       </HeadSection>
       <BodySection>
         <DataTable>
-          <TableTHead>
+          <thead>
             <tr>
               {/* MSRDT */}
-              <TableTh>측정일시</TableTh>
-              {/* MSRRGN_NM */}
-              <TableTh>권역명</TableTh>
+              <TableTh>측정일</TableTh>
+              {/* MSRSTE_NM */}
+              <TableTh>측정소</TableTh>
               {/* PM10 */}
               <TableTh>미세먼지(㎍/㎥)</TableTh>
               {/* PM25 */}
@@ -57,27 +49,8 @@ const Home = () => {
               {/* IDEX_MVL */}
               <TableTh>통합대기환경지수</TableTh>
             </tr>
-          </TableTHead>
-          <TableTBody>
-            {weatherData.map((data, idx) => (
-              <React.Fragment key={idx}>
-                <tr>
-                  <TableTd>{data.MSRDT.slice(0, 8)}</TableTd>
-                  <TableTd>{data.MSRRGN_NM}</TableTd>
-                  <TableTd>{data.PM10}</TableTd>
-                  <TableTd>{data.PM25}</TableTd>
-                  <TableTd>{data.IDEX_NM}</TableTd>
-                  <TableTd>{data.IDEX_MVL}</TableTd>
-                </tr>
-              </React.Fragment>
-            ))}
-            {/* <td>{weatherData[0].MSRDT.slice(0, 8)}</td>
-              <td>{weatherData[0].MSRRGN_NM}</td>
-              <td>{weatherData[0].PM10}</td>
-              <td>{weatherData[0].PM25}</td>
-              <td>{weatherData[0].IDEX_NM}</td>
-              <td>{weatherData[0].IDEX_MVL}</td> */}
-          </TableTBody>
+          </thead>
+          <tbody></tbody>
         </DataTable>
       </BodySection>
     </HomeContainer>

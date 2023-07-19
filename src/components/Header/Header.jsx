@@ -1,10 +1,10 @@
 import { HeaderContainer, LikeLionLogo } from "../HeaderStyle";
-import LikeLion from "../../assets/images/LikeLion.png";
+import DGULikeLion from "../../assets/images/DGU_LikeLion.png";
 
 const Header = () => {
   return (
     <HeaderContainer>
-      <LikeLionLogo src={LikeLion} alt="LikeLion_Logo" />
+      <LikeLionLogo src={DGULikeLion} alt="LikeLion_Logo" />
     </HeaderContainer>
   );
 };

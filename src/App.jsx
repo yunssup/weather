@@ -6,7 +6,6 @@ import Header from "./components/Header/Header";
 import { ThemeProvider } from "styled-components";
 import { dark, light } from "./Theme";
 import { GlobalStyle } from "./GlobalStyle";
-import Footer from "./components/Footer/Footer";
 import { Container } from "./components/HomeStyle";
 
 function App() {
@@ -21,7 +20,6 @@ function App() {
       <Container>
         <Header />
         <Router />
-        <Footer />
       </Container>
     </ThemeProvider>
   );

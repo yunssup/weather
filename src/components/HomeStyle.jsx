@@ -6,5 +6,5 @@ export const Container = styled.div`
   max-width: 100vw;
   display: flex;
   flex-direction: column;
-  border: 1px solid orange;
+  border: 3px solid orange;
 `;
