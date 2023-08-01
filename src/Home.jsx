@@ -13,7 +13,7 @@ const Home = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`http://openAPI.seoul.go.kr:8088/${VITE_APP_API_KEY}/json/RealtimeCityAir/1/40/`);
+      const response = await axios.get(`http://openAPI.seoul.go.kr:8088/${VITE_APP_API_KEY}/json/RealtimeCityAir/1/30/`);
 
       setweatherData(response.data.RealtimeCityAir.row)
     } catch (error) {
@@ -50,25 +50,33 @@ const Home = () => {
             {weatherData.map((lion,idx)=>(
               <tr key={idx}>
                 <td style={{color:`${lion.MSRSTE_NM}` === "노원구" ?  "orange" : "" }}>{lion.MSRRGN_NM}</td>
-                <td style={{color:`${lion.MSRSTE_NM}` === "노원구" ?  "orange" : "" }} onClick={() => navigate(`/detail/${lion.MSRSTE_NM}`,{state: {region: lion.MSRRGN_NM , place: lion.MSRSTE_NM , date: lion.MSRDT , dust:lion.PM10, superdust:lion.PM25 , o3:lion.O3,gas:lion.ARPLT_MAIN, envpoint:lion.IDEX_MVL }})}>{lion.MSRSTE_NM}</td>
+                <td style={{color:`${lion.MSRSTE_NM}` === "노원구" ?  "orange" : "" }} 
+                onClick={() => navigate(`/detail/${lion.MSRSTE_NM}`, {
+                  state: {
+                region: lion.MSRRGN_NM , 
+                place: lion.MSRSTE_NM , 
+                date: lion.MSRDT , 
+                dust:lion.PM10, 
+                superdust:lion.PM25 , 
+                o3:lion.O3,
+                gas:lion.ARPLT_MAIN, 
+                envpoint:lion.IDEX_MVL,
+                sec:lion.NO2,
+                fir:lion.CO,
+                ah:lion.SO2
+              }})}>{lion.MSRSTE_NM}</td>
                 <td style={{color:`${lion.MSRSTE_NM}` === "노원구" ?  "orange" : "" }}>{lion.PM10}</td>
                 <td style={{color:`${lion.MSRSTE_NM}` === "노원구" ?  "orange" : "" }}>{lion.PM25}</td>
                 <td style={{color:`${lion.IDEX_NM}` === "좋음" ? "green" : (`${lion.IDEX_NM}` === "보통" ? (`${lion.MSRSTE_NM}` === "강서구" ?  "orange" : "") :(`${lion.IDEX_NM}` === "나쁨" ? "red" : ""))}}>
                   {lion.IDEX_NM == "좋음" ? "좋음" : lion.IDEX_NM == "보통" ? "보통" : lion.IDEX_NM == "나쁨" ? "나쁨" : '-'}
                 </td>
-
-
                 <td style={{color:`${lion.MSRSTE_NM}` === "노원구" ?  "orange" : "" }}>{lion.IDEX_MVL}</td>                
               </tr>
             ))}
           </tbody>
-              
-
         </DataTable>
-
       </BodySection>
     </HomeContainer>
   );
 };
-
 export default Home;
