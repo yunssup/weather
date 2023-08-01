@@ -50,9 +50,10 @@ const Home = () => {
             {weatherData.map((lion,idx)=>(
               <tr key={idx}>
                 <td style={{color:`${lion.MSRSTE_NM}` === "노원구" ?  "orange" : "" }}>{lion.MSRRGN_NM}</td>
+                
                 <td style={{color:`${lion.MSRSTE_NM}` === "노원구" ?  "orange" : "" }} 
-                onClick={() => navigate(`/detail/${lion.MSRSTE_NM}`, {
-                  state: {
+                onClick={() => navigate(`/detail/${lion.MSRSTE_NM}`, 
+                {state: {
                 region: lion.MSRRGN_NM , 
                 place: lion.MSRSTE_NM , 
                 date: lion.MSRDT , 
@@ -67,7 +68,7 @@ const Home = () => {
               }})}>{lion.MSRSTE_NM}</td>
                 <td style={{color:`${lion.MSRSTE_NM}` === "노원구" ?  "orange" : "" }}>{lion.PM10}</td>
                 <td style={{color:`${lion.MSRSTE_NM}` === "노원구" ?  "orange" : "" }}>{lion.PM25}</td>
-                <td style={{color:`${lion.IDEX_NM}` === "좋음" ? "green" : (`${lion.IDEX_NM}` === "보통" ? (`${lion.MSRSTE_NM}` === "강서구" ?  "orange" : "") :(`${lion.IDEX_NM}` === "나쁨" ? "red" : ""))}}>
+                <td style={{color:`${lion.IDEX_NM}` === "좋음" ? "green" : (`${lion.IDEX_NM}` === "보통" ? (`${lion.MSRSTE_NM}` === "" ?  "orange" : "") :(`${lion.IDEX_NM}` === "나쁨" ? "red" : ""))}}>
                   {lion.IDEX_NM == "좋음" ? "좋음" : lion.IDEX_NM == "보통" ? "보통" : lion.IDEX_NM == "나쁨" ? "나쁨" : '-'}
                 </td>
                 <td style={{color:`${lion.MSRSTE_NM}` === "노원구" ?  "orange" : "" }}>{lion.IDEX_MVL}</td>                
