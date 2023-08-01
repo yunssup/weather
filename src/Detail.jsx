@@ -11,14 +11,13 @@ const Detail = () => {
       <Container>
         <Box>
           <Top>
-            <Left>{location.state.region} : {location.state.place}</Left>
-            <Right>{location.state.date}</Right>
+            <Left>💗{location.state.place} 대기환경 알림💗<br/>{location.state.date}</Left>
           </Top>
           <Body>
-            미세먼지(㎍/㎥): {location.state.dust}<br />
-            초미세먼지농도(㎍/㎥): {location.state.superdust}<br />
-            오존(ppm): {location.state.o3}<br />
-            통합대기환경지수: {location.state.envpoint}<br />
+            미세먼지(㎍/㎥): {location.state.mun}<br />
+            초미세먼지농도(㎍/㎥): {location.state.small}<br />
+            오존(ppm): {location.state.oo}<br />
+            통합대기환경지수: {location.state.cai}<br />
             지수결정물질: {location.state.gas}<br />
             이산화질소농도(ppm): {location.state.sec}<br />
             일산화탄소농도(ppm): {location.state.fir}<br />
@@ -54,17 +53,19 @@ const Top = styled.div`
   display: flex;
   height: 20%;
   align-items: center;
-  justify-content: space-between;
   margin: 5% 10%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 `
 const Left = styled.div`
-  font-size: 45px;
+  font-size: 30px;
   font-weight: 600;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 `
-const Right = styled.div`
-  font-size: 20px;
-  font-weight: 600;
-`
+
 const Body = styled.div`
   color: black;
   height: 70%;
